@@ -1,0 +1,20 @@
+const dfs = (tree) => {
+  const res = [];
+  const mapping = (tree) => {
+    const [name, children] = tree;
+    res.push(name);
+    if (!children) {
+      return;
+    }
+    children.map(mapping);
+  };
+  mapping(tree);
+  return res;
+};
+
+const tree = ['A', [
+  ['B', [['E'], ['F']]],
+  ['C'],
+  ['D', [['G'], ['J']]],
+]];
+=> [ 'A', 'B', 'E', 'F', 'C', 'D', 'G', 'J' ]
